@@ -21,7 +21,7 @@ Einen hinter die Rüstung römern
 Einen zwischen die Kiemen peitschen
 Sich das Blechdach verbiegen
 Sich den Arsch auskugeln
-Sich den Magen blau fliesen
+Sich den Magen blau kacheln
 Sich die Bordsteinkante schön trinken
 Sich die Tontauben vom Dachstuhl schießen
 Die Leber von der Spenderliste streichen
@@ -62,7 +62,7 @@ Sich vom Planeten hebeln
 Sich den Durchblick zuspachteln
 Den Heimweg vermienen
 Die Leinwand alternativ belichten
-Eine an den Hut klemmen
+Sich einen untern Hut klemmen
 Sich ne neue Birne reinschrauben
 Sich nen Kater ansetzen
 Ins Neandertal fahren
@@ -108,6 +108,7 @@ Im Trichter baden
 Die Eule vom Ast bolzen
 Den Zapfhahn schlachten
 Glasmantelgeschosse im Kaliber 0,5L laden
+Sich einen hinter die Alm jodeln
 
 
 # Reiner Nonsens
