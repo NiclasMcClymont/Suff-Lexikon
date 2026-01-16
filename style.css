@@ -1,0 +1,468 @@
+:root {
+    /* Bierglas */
+    --beer-top: #ffe07a;
+    --beer-mid: #f6b41b;
+    --beer-deep: #d88407;
+    --beer-bottom: #7a2f05;
+  
+    --ink: rgba(22, 12, 4, 0.92);
+    --ink-soft: rgba(22, 12, 4, 0.68);
+  
+    --glass: rgba(255, 255, 255, 0.18);
+    --glass-stroke: rgba(255, 255, 255, 0.24);
+    --shadow: rgba(0, 0, 0, 0.30);
+  }
+  
+  * { box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  
+  html {
+    /* Bier ohne Bild: Licht, Tiefe, Vignette (auf html, damit es beim Scrollen nicht „neu startet“) */
+    background:
+      radial-gradient(900px 600px at 50% 18%, rgba(255, 255, 255, 0.22), transparent 62%),
+      radial-gradient(700px 420px at 18% 38%, rgba(255, 255, 255, 0.10), transparent 62%),
+      radial-gradient(700px 420px at 82% 46%, rgba(0, 0, 0, 0.08), transparent 65%),
+      radial-gradient(1200px 900px at 50% 55%, transparent 55%, rgba(0,0,0,0.18) 100%),
+      linear-gradient(180deg,
+        var(--beer-top) 0%,
+        var(--beer-mid) 38%,
+        var(--beer-deep) 72%,
+        var(--beer-bottom) 100%
+      );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    color: var(--ink);
+    overflow-x: hidden;
+    background: transparent;
+  }
+  
+  /* Glas-Reflexe (ohne Bild) */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  
+    background:
+      linear-gradient(90deg,
+        rgba(255,255,255,0.00) 0%,
+        rgba(255,255,255,0.18) 6%,
+        rgba(255,255,255,0.02) 14%,
+        rgba(255,255,255,0.10) 22%,
+        rgba(255,255,255,0.00) 32%,
+        rgba(255,255,255,0.06) 58%,
+        rgba(255,255,255,0.00) 70%,
+        rgba(255,255,255,0.08) 86%,
+        rgba(255,255,255,0.00) 100%
+      );
+  
+    opacity: 0.45;
+    mix-blend-mode: soft-light;
+  }
+  
+  /* Aufsteigende Blasen: zwei Layer mit unterschiedlichen Geschwindigkeiten */
+  .bubbles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-repeat: repeat;
+  }
+  
+  /* Kleine Blasen: häufiger, aber langsamer */
+  .bubbles--small {
+    opacity: 0.95;
+    background-image:
+      radial-gradient(circle 3px at 12% 92%, rgba(255,255,255,0.42) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 18% 74%, rgba(255,255,255,0.38) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 24% 86%, rgba(255,255,255,0.40) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 31% 78%, rgba(255,255,255,0.36) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 38% 90%, rgba(255,255,255,0.40) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 46% 72%, rgba(255,255,255,0.36) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 54% 88%, rgba(255,255,255,0.40) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 62% 76%, rgba(255,255,255,0.36) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 70% 90%, rgba(255,255,255,0.40) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 78% 74%, rgba(255,255,255,0.36) 0 55%, transparent 60%),
+      radial-gradient(circle 3px at 86% 88%, rgba(255,255,255,0.40) 0 55%, transparent 60%);
+  
+    /* große Tile-Höhen -> kein sichtbarer Repeat/Seam */
+    background-size:
+      100% 210px,
+      100% 240px,
+      100% 200px,
+      100% 230px,
+      100% 220px,
+      100% 250px,
+      100% 205px,
+      100% 235px,
+      100% 215px,
+      100% 245px,
+      100% 225px;
+  
+    animation: bubbles-rise-small 14s linear infinite;
+  }
+  
+  /* Größere Blasen: seltener, aber merkbar schneller */
+  .bubbles--big {
+    opacity: 0.75;
+    background-image:
+      radial-gradient(circle 6px at 16% 90%, rgba(255,255,255,0.42) 0 55%, transparent 60%),
+      radial-gradient(circle 5px at 44% 84%, rgba(255,255,255,0.36) 0 55%, transparent 60%),
+      radial-gradient(circle 7px at 72% 88%, rgba(255,255,255,0.38) 0 55%, transparent 60%),
+      radial-gradient(circle 5px at 88% 78%, rgba(255,255,255,0.34) 0 55%, transparent 60%);
+  
+    /* große Tile-Höhen -> kein sichtbarer Repeat/Seam */
+    background-size:
+      100% 720px,
+      100% 840px,
+      100% 780px,
+      100% 900px;
+  
+    animation: bubbles-rise-big 7s linear infinite;
+  }
+  
+  @keyframes bubbles-rise-small {
+    from {
+      background-position:
+        0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    to {
+      /* jeweils ein Vielfaches der background-size -> kein sichtbarer Sprung */
+      background-position:
+        0 -2100px,
+        0 -2400px,
+        0 -2000px,
+        0 -2300px,
+        0 -2200px,
+        0 -2500px,
+        0 -2050px,
+        0 -2350px,
+        0 -2150px,
+        0 -2450px,
+        0 -2250px;
+    }
+  }
+  
+  @keyframes bubbles-rise-big {
+    from { background-position: 0 0, 0 0, 0 0, 0 0; }
+    to   { background-position: 0 -2160px, 0 -2520px, 0 -2340px, 0 -2700px; }
+  }
+  
+  .page {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    z-index: 1; /* Content über Blasen */
+  }
+  
+  /* Schaumkrone-Leiste */
+  .top {
+    position: relative;
+    padding: 18px 16px 34px;
+    text-align: center;
+    isolation: isolate;
+    z-index: -2;
+    background: #ffffff; /* oben reinweiß */
+  }
+  
+  /* Schaumfläche */
+  .top::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  
+    background:
+      radial-gradient(320px 120px at 25% 10px, rgba(255,255,255,0.45), transparent 74%),
+      radial-gradient(300px 110px at 75% 16px, rgba(255,255,255,0.36), transparent 76%),
+      repeating-radial-gradient(circle at 0 0,
+        rgba(255,255,255,0.10) 0 1px,
+        rgba(255,255,255,0.00) 2px 14px
+      ) 0 0 / 28px 28px,
+      linear-gradient(180deg,
+        rgba(255,255,255,1.00) 0%,
+        rgba(255,255,255,0.99) 55%,
+        rgba(255,255,255,0.96) 100%
+      );
+  }
+  
+  /* Unterkante: nur Schaumformen, bündig (kein Verlauf-Balken) */
+  .top::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -22px;
+    height: 44px;
+    z-index: -2;
+  
+    background:
+      /* Wellenkante */
+      radial-gradient(circle at 12px 12px, rgba(255,255,255,1.00) 0 12px, transparent 13px)
+        0 0 / 24px 24px repeat-x,
+  
+      /* organische Drips */
+      radial-gradient(44px 36px at 18% 10px, rgba(255,255,255,0.99) 0 68%, transparent 70%),
+      radial-gradient(54px 42px at 36% 2px,  rgba(255,255,255,0.99) 0 66%, transparent 68%),
+      radial-gradient(40px 34px at 58% 12px, rgba(255,255,255,0.99) 0 68%, transparent 70%),
+      radial-gradient(58px 46px at 78% 0px,  rgba(255,255,255,0.99) 0 65%, transparent 67%);
+  
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.10));
+  }
+  
+  h1 {
+    margin: 0;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+    font-size: clamp(20px, 3.2vw, 34px);
+    color: rgba(36, 18, 6, 0.92);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.65);
+    text-align: center;
+  }
+  
+  /* Banner: Titel wirklich mittig, unabhängig vom Back-Link
+     -> NUR auf Unterseiten mit .has-back, damit die Startseite normal bleibt */
+  .banner.has-back { position: relative; }
+  .banner.has-back > h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 200px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .logo {
+    display: inline-block;
+    transform: translateY(1px);
+    margin-right: 8px;
+  }
+  
+  /* Banner-Layout: links Back-Icon, Titel zentriert */
+  .banner {
+    width: 100%;
+    margin: 0;
+    padding: 0 12px;
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+  }
+  
+  .back {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 10px;
+    color: rgba(36, 18, 6, 0.92);
+    transition: transform 120ms ease, background 120ms ease;
+  }
+  
+  .back .icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+  
+  .back .label {
+    letter-spacing: 0.2px;
+  }
+  
+  .back:hover {
+    transform: translateX(-1px);
+    background: rgba(0,0,0,0.04);
+  }
+  
+  .banner-left, .banner-right { display: block; }
+  
+  /* Textbox-Variante für Unterseiten (Datenschutz/Impressum/About): gut lesbar, ohne harte Kanten */
+  .pagebox {
+    /* überschreibt die riesige .synonym-Typo */
+    font-size: clamp(14px, 1.05vw, 17px) !important;
+    line-height: 1.75;
+    font-weight: 560;
+    text-align: left;
+    letter-spacing: 0.1px;
+  }
+  
+  /* Auf Unterseiten: „Synonym“-Box als Lesetext-Card */
+  .synonym.pagebox {
+    max-width: min(860px, 94vw);
+    padding: clamp(18px, 2.6vw, 26px) clamp(16px, 2.6vw, 28px);
+  
+    /* etwas mehr Deckkraft -> weniger Banding/harte Kanten über dem Verlauf */
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.22),
+      rgba(255,255,255,0.14)
+    );
+    border: 1px solid rgba(255,255,255,0.28);
+    box-shadow:
+      0 18px 50px rgba(0,0,0,0.22),
+      inset 0 1px 0 rgba(255,255,255,0.34);
+  }
+  
+  .synonym.pagebox h2 {
+    margin: 16px 0 8px;
+    font-size: clamp(16px, 1.2vw, 19px);
+    line-height: 1.25;
+  }
+  
+  .synonym.pagebox h2:first-child { margin-top: 0; }
+  
+  .synonym.pagebox p {
+    margin: 0 0 10px;
+    max-width: 72ch;
+  }
+  
+  .synonym.pagebox p:last-child { margin-bottom: 0; }
+  
+  .synonym.pagebox ul {
+    margin: 8px 0 14px;
+    padding-left: 1.25em;
+    max-width: 72ch;
+  }
+  
+  .synonym.pagebox li { margin: 4px 0; }
+  
+  .synonym.pagebox a {
+    color: rgba(10, 36, 88, 0.95);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .synonym.pagebox a:hover { opacity: 0.9; }
+  
+  
+  .pagebox h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+  
+  .pagebox p { margin: 0 0 10px; }
+  .pagebox p:last-child { margin-bottom: 0; }
+  
+  .center {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    gap: 16px;
+    padding: clamp(16px, 6vh, 56px) 16px;
+  }
+  
+  /* „Glas“-Frame: nur Hintergrund blur + leichte Glaskante */
+  .synonym {
+    margin: 0;
+    max-width: min(980px, 92vw);
+    padding: clamp(18px, 3vw, 28px) clamp(16px, 3vw, 30px);
+    border-radius: 18px;
+  
+    background: var(--glass);
+    border: 1px solid var(--glass-stroke);
+    box-shadow:
+      0 18px 55px var(--shadow),
+      inset 0 1px 0 rgba(255,255,255,0.30);
+  
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
+    backdrop-filter: blur(14px) saturate(125%);
+  
+    font-size: clamp(24px, 4.2vw, 52px);
+    line-height: 1.15;
+    font-weight: 900;
+    color: rgba(22, 12, 4, 0.92);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.28);
+  }
+  
+  .btn {
+    appearance: none;
+    border: 1px solid rgba(40, 18, 4, 0.22);
+    background:
+      radial-gradient(120px 40px at 50% 20%, rgba(255,255,255,0.25), transparent 70%),
+      linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
+  
+    color: rgba(22, 12, 4, 0.90);
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.20);
+    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 🍺 Wasserzeichen hinter dem Button-Text */
+  .btn::before {
+    content: "🍺";
+    position: absolute;
+    inset: -24px;
+    display: grid;
+    place-items: center;
+    font-size: 52px;
+    opacity: 0.24;
+    transform: rotate(-8deg) translateY(2px);
+    pointer-events: none;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.10));
+    mix-blend-mode: soft-light;
+  }
+  
+  .btn:hover::before { opacity: 0.30; }
+  
+  .btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(40, 18, 4, 0.35);
+    box-shadow: 0 16px 34px rgba(0,0,0,0.24);
+  }
+  
+  .btn:active { transform: translateY(0px) scale(0.99); }
+  
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.25), 0 16px 34px rgba(0,0,0,0.24);
+  }
+  
+  .bottom {
+    display: flex;
+    justify-content: center;
+    padding: 10px 16px 14px;
+  }
+  
+  .links {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 2px;
+    border-radius: 8px;
+    transition: color 120ms ease;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.22);
+  }
+  
+  .links a:hover { color: rgba(22, 12, 4, 0.92); }
+  
+  .dot { color: rgba(22, 12, 4, 0.30); }
+  
+  @media (max-width: 360px) { .btn { width: 100%; } }
+  
+  /* Bewegungsreduktion */
+  @media (prefers-reduced-motion: reduce) {
+    .bubbles { animation: none; }
+  }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Suff Synonyme</title>
+  <meta name="description" content="Das Suff Lexikon" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' x='6' font-size='48'%3E%F0%9F%8D%BA%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bubbles bubbles--small" aria-hidden="true"></div>
+  <div class="bubbles bubbles--big" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="top" role="banner">
+      <div class="banner">
+        <span class="banner-left" aria-hidden="true"></span>
+        <h1><span class="logo" aria-hidden="true">🍺</span> Synonyme fürs Saufen</h1>
+        <span class="banner-right" aria-hidden="true"></span>
+      </div>
+    </header>
+
+    <main class="center" role="main">
+      <p class="synonym" id="synonym" aria-live="polite"></p>
+      <button class="btn" id="next" type="button">Eins geht noch!</button>
+    </main>
+
+    <footer class="bottom">
+      <nav class="links" aria-label="Footer">
+        <a href="impressum.html">Impressum</a>
+        <span class="dot" aria-hidden="true">·</span>
+        <a href="datenschutz.html">Datenschutz</a>
+        <span class="dot" aria-hidden="true">·</span>
+        <a href="github.html">About</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

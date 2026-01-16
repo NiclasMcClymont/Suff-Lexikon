@@ -1,0 +1,3 @@
+# Eine Zeile = ein Spruch (leere Zeilen und #Kommentare werden ignoriert)
+Saufen
+Einen heben
