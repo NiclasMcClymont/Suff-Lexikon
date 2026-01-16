@@ -1,3 +1,77 @@
 # Eine Zeile = ein Spruch (leere Zeilen und #Kommentare werden ignoriert)
+# Klassiker
 Saufen! 🍺
-Einen heben
+Sich volllaufen lassen
+Sich die Kante geben
+Sich zuschütten
+Sich die Birne vollmachen
+Sich dem Trank hingeben
+Der Flasche huldigen
+
+
+# Derb / volkstümlich
+Sich den Helm lackieren
+Sich die Latten vom Zaun prügeln
+Sich einen hinter die Buche fichten
+Sich achtarmig einen reinorgeln
+Ordentlich einen reinlöten
+Sich runde Füße trinken
+Sich den Bug volllaufen lassen
+Einen hinter die Rüstung römern
+Einen zwischen die Kiemen peitschen
+Sich das Blechdach verbiegen
+Sich den Arsch auskugeln
+Sich den Magen blau fliesen
+Sich die Bordsteinkante schön trinken
+Sich die Tontauben vom Dachstuhl schießen
+
+
+# Poetisch / ironisch
+Sich das Frühstück entkorken
+Die Gardinen zuziehen
+Den Hals desinfizieren
+Den Hopfenhut herbeizaubern
+Einen Getränkeunfall erleiden
+Die Luft aus den Gläsern lassen
+Kaltgetränke zurück ins Fass pressen
+Die Rinne verzinken
+Die Ziege blind machen
+Die Schleimhäute vor Corona schützen
+Das Vaterland mit Stolz erfüllen
+Den wöchentlichen Ölwechsel vollziehen
+Die Arbeitsunfähigkeitsbescheinigung vorbereiten
+
+
+# Technisch / metaphorisch
+Die Fliesen verfugen
+Die Batterie abklemmen
+Die Kontakte befeuchten
+Den Maschinenraum fluten
+Die Festplatte formatieren
+Den Motor mit E10 laufen lassen
+Eine Nierenspülung machen lassen
+Die Magenwand auf Dichtheit prüfen
+Die Fasspopulation dezimieren
+Den Intelligenzquotienten mit -1 multiplizieren
+Sich die Hirnfalten raushobeln
+Die Rinne verzinken
+Die Großhirnrinde überflüssig machen
+Sich die Muttersprache abgewöhnen
+Sich das Blut verdünnen
+Hopfentorpedos ins Wasser lassen
+
+
+# Absurder Hochgenuss
+Eine Verkostung im Bierfachgeschäft zu Gemüte führen
+Den Vollkornsprudel ins Feinkostgewölbe kippen
+Spaßgranaten in die Leber mörsern
+Krawallbrausen hinter die Fresspappe kippen
+Hopfenkreuze in die Alkoholkapelle priestern
+Die Schaumkrone vom Maßkrug jodeln
+Sich richtig den Propeller verbiegen
+Die Ziege blind machen
+
+
+# Reiner Nonsens
+Den Maschendrahtzaun in die Kotzfalte frisieren
+Einen in den Damm biebern
