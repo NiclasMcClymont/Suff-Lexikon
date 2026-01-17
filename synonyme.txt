@@ -55,7 +55,7 @@ Schön die Leber veredeln
 Einen ins Toupet föhnen
 An der Theke promovieren
 Das Oberlippenbärtchen in den Schwimmkurs schicken
-Das Trockenloch spühlen
+Das Trockenloch spülen
 Den inneren Bildungsbürger ertränken
 Dem Gaumen Zucker geben
 Sich vom Planeten hebeln
@@ -84,13 +84,15 @@ Die Großhirnrinde überflüssig machen
 Sich die Muttersprache abgewöhnen
 Sich das Blut verdünnen
 Hopfentorpedos ins Wasser lassen
-Sich auf Werkseinstellungen zurücksetzten
+Sich auf Werkseinstellungen zurücksetzen
 Einen in den Zylinder zaubern
 Sich einen in den Geräteschuppen stellen
 Sich das Cockpit renovieren
 Sich einen in die Rippen kneten
 Sich den Stollen zuschütten
 Ein paar 0,3er Bleche kanten
+Dat Mopped in Schräglage bringen
+Sich den Fahrplan neu schreiben
 
 
 # Absurder Hochgenuss
@@ -109,6 +111,7 @@ Die Eule vom Ast bolzen
 Den Zapfhahn schlachten
 Glasmantelgeschosse im Kaliber 0,5L laden
 Sich einen hinter die Alm jodeln
+Dem Gedächtnis Urlaub geben
 
 
 # Reiner Nonsens
